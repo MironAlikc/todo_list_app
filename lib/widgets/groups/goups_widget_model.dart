@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_list_app/domain/group.dart';
@@ -43,13 +42,11 @@ class GroupsWidgetModel extends ChangeNotifier {
 class GroupsWidgetModelProvider extends InheritedNotifier {
   final GroupsWidgetModel model;
   const GroupsWidgetModelProvider({
-    Key? key,
+    super.key,
     required this.model,
-    required Widget child,
+    required super.child,
   }) : super(
-          key: key,
           notifier: model,
-          child: child,
         );
 
   static GroupsWidgetModelProvider? watch(BuildContext context) {
