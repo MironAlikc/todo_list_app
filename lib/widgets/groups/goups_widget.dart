@@ -3,7 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:todo_list_app/widgets/groups/goups_widget_model.dart';
 
 class GroupsWidget extends StatefulWidget {
-  const GroupsWidget({Key? key}) : super(key: key);
+  const GroupsWidget({super.key});
 
   @override
   State<GroupsWidget> createState() => _GroupsWidgetState();
@@ -22,7 +22,7 @@ class _GroupsWidgetState extends State<GroupsWidget> {
 }
 
 class _GroupsWidgetBody extends StatelessWidget {
-  const _GroupsWidgetBody({Key? key}) : super(key: key);
+  const _GroupsWidgetBody();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class _GroupsWidgetBody extends StatelessWidget {
 }
 
 class _GroupListWidget extends StatelessWidget {
-  const _GroupListWidget({Key? key}) : super(key: key);
+  const _GroupListWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +49,11 @@ class _GroupListWidget extends StatelessWidget {
         GroupsWidgetModelProvider.watch(context)?.model.groups.length ?? 0;
     return ListView.separated(
       itemCount: groupsCount,
-      itemBuilder: (BuildContext context, int index) {
-        return _GroupListRowWidget(indexInList: index);
-      },
       separatorBuilder: (BuildContext context, int index) {
         return const Divider(height: 1);
+      },
+      itemBuilder: (BuildContext context, int index) {
+        return _GroupListRowWidget(indexInList: index);
       },
     );
   }
@@ -62,9 +62,8 @@ class _GroupListWidget extends StatelessWidget {
 class _GroupListRowWidget extends StatelessWidget {
   final int indexInList;
   const _GroupListRowWidget({
-    Key? key,
     required this.indexInList,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -73,20 +72,6 @@ class _GroupListRowWidget extends StatelessWidget {
 
     return Slidable(
       actionPane: const SlidableDrawerActionPane(),
-      actions: <Widget>[
-        IconSlideAction(
-          caption: 'Archive',
-          color: Colors.blue,
-          icon: Icons.archive,
-          onTap: () => () {},
-        ),
-        IconSlideAction(
-          caption: 'Share',
-          color: Colors.indigo,
-          icon: Icons.share,
-          onTap: () => () {},
-        ),
-      ],
       secondaryActions: <Widget>[
         IconSlideAction(
           caption: 'More',
